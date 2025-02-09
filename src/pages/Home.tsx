@@ -3,6 +3,24 @@ import { Link } from 'react-router-dom';
 import { Star, Tv, Camera, Users } from 'lucide-react';
 
 const Home = () => {
+  const successStories = [
+    {
+      name: 'Ana Clara Souza',
+      quote: "Graças ao Julio Campos Machado, consegui meu primeiro papel em uma novela da Globo. Sua orientação foi essencial para eu me destacar nas audições.",
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80',
+    },
+    {
+      name: 'Rafael Mendes',
+      quote: "O Julio me ajudou a entrar no mundo da publicidade. Hoje, trabalho com grandes marcas e agências, tudo graças ao seu apoio e indicações.",
+      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80',
+    },
+    {
+      name: 'Camila Lima',
+      quote: "Sempre sonhei em ser atriz, e o Julio foi fundamental para eu conseguir meu primeiro trabalho na Record. Sou muito grata por toda a ajuda!",
+      image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80',
+    },
+  ];
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -75,11 +93,11 @@ const Home = () => {
           <h2 className="text-3xl font-bold text-center mb-16">Histórias de Sucesso</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-white rounded-lg shadow-md overflow-hidden">
+            {successStories.map((story, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img
-                  src={`https://images.unsplash.com/photo-${i === 1 ? '1507003211169-0a1dd7228f2d' : i === 2 ? '1494790108377-be9c29b29330' : '1539571696357-5a69c17a67c6'}?auto=format&fit=crop&q=80`}
-                  alt={`Talento ${i}`}
+                  src={story.image}
+                  alt={story.name}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -91,9 +109,9 @@ const Home = () => {
                     <Star className="w-5 h-5 text-yellow-500" />
                   </div>
                   <p className="text-gray-600 italic mb-4">
-                    "Graças ao Julio Campos Machado, realizei meu sonho de trabalhar na TV. Sua orientação e oportunidades foram fundamentais para minha carreira."
+                    "{story.quote}"
                   </p>
-                  <p className="font-semibold">- Modelo Like Look  {i}</p>
+                  <p className="font-semibold">{story.name}</p>
                 </div>
               </div>
             ))}
