@@ -121,37 +121,37 @@ const ChatBot = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-4 right-4 bg-yellow-500 text-white p-4 rounded-full shadow-lg hover:bg-yellow-600 transition-colors z-50"
+          className="fixed bottom-4 right-4 bg-yellow-500 text-white p-3 sm:p-4 rounded-full shadow-lg hover:bg-yellow-600 transition-colors z-50"
         >
-          <MessageSquare className="w-6 h-6" />
+          <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
       )}
 
       {/* Janela do chat */}
       {isOpen && (
         <div
-          className={`fixed right-4 bottom-4 w-96 bg-white rounded-lg shadow-xl z-50 transition-all duration-300 ${
-            isMinimized ? 'h-14' : 'h-[600px]'
+          className={`fixed right-2 sm:right-4 bottom-4 w-[calc(100%-1rem)] sm:w-[400px] bg-white rounded-lg shadow-xl z-50 transition-all duration-300 ${
+            isMinimized ? 'h-14' : 'h-[500px] sm:h-[600px]'
           }`}
         >
           {/* Header do chat */}
-          <div className="flex items-center justify-between p-4 border-b bg-yellow-500 text-white rounded-t-lg">
+          <div className="flex items-center justify-between p-3 sm:p-4 border-b bg-yellow-500 text-white rounded-t-lg">
             <div className="flex items-center space-x-2">
-              <MessageSquare className="w-6 h-6" />
-              <span className="font-semibold">Julio Campos Machado</span>
+              <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />
+              <span className="font-semibold text-sm sm:text-base">Julio Campos Machado</span>
             </div>
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => setIsMinimized(!isMinimized)}
                 className="hover:text-gray-200 transition-colors"
               >
-                {isMinimized ? <Maximize2 className="w-5 h-5" /> : <MinusSquare className="w-5 h-5" />}
+                {isMinimized ? <Maximize2 className="w-4 h-4 sm:w-5 sm:h-5" /> : <MinusSquare className="w-4 h-4 sm:w-5 sm:h-5" />}
               </button>
               <button
                 onClick={() => setIsOpen(false)}
                 className="hover:text-gray-200 transition-colors"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
           </div>
@@ -159,7 +159,7 @@ const ChatBot = () => {
           {!isMinimized && (
             <>
               {/* Área de mensagens */}
-              <div className="h-[480px] overflow-y-auto p-4 space-y-4">
+              <div className="h-[400px] sm:h-[480px] overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4">
                 {messages.map((message, index) => (
                   <div
                     key={index}
@@ -168,7 +168,7 @@ const ChatBot = () => {
                     }`}
                   >
                     <div
-                      className={`max-w-[80%] p-3 rounded-lg ${
+                      className={`max-w-[85%] p-2 sm:p-3 rounded-lg text-sm sm:text-base ${
                         message.type === 'user'
                           ? 'bg-yellow-500 text-white'
                           : 'bg-gray-100 text-gray-800'
@@ -182,7 +182,7 @@ const ChatBot = () => {
               </div>
 
               {/* Input de mensagem */}
-              <div className="p-4 border-t">
+              <div className="p-3 sm:p-4 border-t">
                 <div className="flex space-x-2">
                   <input
                     type="text"
@@ -190,14 +190,14 @@ const ChatBot = () => {
                     onChange={(e) => setInput(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                     placeholder="Digite sua mensagem..."
-                    className="flex-1 p-2 border rounded-md focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                    className="flex-1 p-2 text-sm sm:text-base border rounded-md focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                     ref={inputRef}
                   />
                   <button
                     onClick={handleSend}
                     className="bg-yellow-500 text-white p-2 rounded-md hover:bg-yellow-600 transition-colors"
                   >
-                    <Send className="w-5 h-5" />
+                    <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                   </button>
                 </div>
               </div>
