@@ -5,17 +5,17 @@ import { Star, Tv, Camera, Users } from 'lucide-react';
 const Home = () => {
   const successStories = [
     {
-      name: 'Ana Clara Souza',
+      name: 'Rafael Mendes',
       quote: "Graças ao Julio Campos Machado, consegui meu primeiro papel em uma novela da Globo. Sua orientação foi essencial para eu me destacar nas audições.",
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80',
     },
     {
-      name: 'Rafael Mendes',
+      name: 'Ana Clara Souza',
       quote: "O Julio me ajudou a entrar no mundo da publicidade. Hoje, trabalho com grandes marcas e agências, tudo graças ao seu apoio e indicações.",
       image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80',
     },
     {
-      name: 'Camila Lima',
+      name: 'Carlos Lima',
       quote: "Sempre sonhei em ser atriz, e o Julio foi fundamental para eu conseguir meu primeiro trabalho na Record. Sou muito grata por toda a ajuda!",
       image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80',
     },
