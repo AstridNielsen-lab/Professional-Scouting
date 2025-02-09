@@ -16,7 +16,7 @@ const Home = () => {
     },
     {
       name: 'Carlos Lima',
-      quote: "Sempre sonhei em ser atriz, e o Julio foi fundamental para eu conseguir meu primeiro trabalho na Record. Sou muito grata por toda a ajuda!",
+      quote: "Sempre sonhei em ser ator, e o Julio foi fundamental para eu conseguir meu primeiro trabalho na Record. Sou muito grato por toda a ajuda!",
       image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80',
     },
   ];
