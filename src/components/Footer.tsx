@@ -46,11 +46,10 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="font-semibold text-lg mb-4">Legal</h3>
+            <h3 className="font-semibold text-lg mb-4">Modelos</h3>
             <ul className="space-y-2 text-sm sm:text-base">
-              <li><Link to="/termos" className="text-gray-400 hover:text-white">Termos de Uso</Link></li>
-              <li><Link to="/privacidade" className="text-gray-400 hover:text-white">Política de Privacidade</Link></li>
-            </ul>
+              <li><Link to="https://likelook.wixsite.com/showroomfittings" className="text-gray-400 hover:text-white">Casting</Link></li>
+                         </ul>
           </div>
         </div>
         
