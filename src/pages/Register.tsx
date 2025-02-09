@@ -21,13 +21,33 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const Register = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
-    // Here we would handle the form submission
+    const subject = encodeURIComponent('Novo Cadastro de Talento - ' + data.fullName);
+    const body = encodeURIComponent(`
+Nome Completo: ${data.fullName}
+Idade: ${data.age}
+Email: ${data.email}
+WhatsApp: ${data.phone}
+Cidade: ${data.city}
+Estado: ${data.state}
+Área de Interesse: ${data.area}
+Redes Sociais: ${data.socialMedia}
+
+Mensagem:
+${data.message}
+    `);
+
+    window.location.href = `mailto:juliocamposmachado@gmail.com?subject=${subject}&body=${body}`;
+    
+    // Reset the form after submission
+    reset();
+    
+    // Show success message
+    alert('Seu cadastro foi preparado para envio! Se o seu programa de email não abrir automaticamente, por favor entre em contato pelo WhatsApp (11) 97060-3441 ou (11) 99294-6628.');
   };
 
   const areas = [

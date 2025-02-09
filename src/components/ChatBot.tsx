@@ -24,11 +24,10 @@ const ChatBot = () => {
 
   useEffect(() => {
     if (isOpen && messages.length === 0) {
-      // Mensagem inicial do bot
       setMessages([
         {
           type: 'bot',
-          content: 'Olá! Sou Julio Campos Machado, scouter profissional com mais de 20 anos de experiência. Como posso ajudar você hoje? Posso falar sobre castings, TV, cinema, publicidade e muito mais!'
+          content: 'Olá! Sou Julio Campos Machado, scouter profissional com mais de 20 anos de experiência. Como posso ajudar você hoje? Posso orientar sobre castings, TV, cinema, publicidade e muito mais!'
         }
       ]);
     }
@@ -41,35 +40,79 @@ const ChatBot = () => {
     setMessages(prev => [...prev, { type: 'user', content: userMessage }]);
     setInput('');
 
-    // Simular resposta do bot baseada em palavras-chave
     setTimeout(() => {
-      const response = generateBotResponse(userMessage.toLowerCase());
+      const response = generateResponse(userMessage.toLowerCase(), messages);
       setMessages(prev => [...prev, { type: 'bot', content: response }]);
     }, 1000);
   };
 
-  const generateBotResponse = (message: string): string => {
-    if (message.includes('casting') || message.includes('teste')) {
-      return 'Para participar dos nossos castings, é importante ter um bom material fotográfico e disponibilidade para testes. Cada projeto tem requisitos específicos que avaliamos cuidadosamente. Para um atendimento personalizado, entre em contato pelo WhatsApp (11) 97060-3441 ou (11) 99294-6628.';
-    }
-    
-    if (message.includes('novela') || message.includes('tv') || message.includes('televisão')) {
-      return 'Trabalho diretamente com as principais emissoras do Brasil, incluindo Globo, SBT e Record. Para TV, buscamos talentos com ou sem experiência, mas é fundamental ter técnica de atuação e fotogenia. Posso avaliar seu perfil pessoalmente, me envie um email para juliocamposmachado@gmail.com';
-    }
-    
-    if (message.includes('modelo') || message.includes('moda') || message.includes('passarela')) {
-      return 'Na área da moda, avalio perfis para passarela, catálogos e campanhas publicitárias. Cada segmento tem suas especificações de altura e biotipo. Para uma avaliação detalhada do seu perfil, entre em contato pelo WhatsApp (11) 97060-3441.';
-    }
-    
-    if (message.includes('publicidade') || message.includes('comercial')) {
-      return 'Para campanhas publicitárias, trabalhamos com diversos perfis. O mercado publicitário busca pessoas autênticas e carismáticas. Se você tem interesse, podemos avaliar seu perfil. Entre em contato pelo email juliocamposmachado@gmail.com';
-    }
-    
-    if (message.includes('contato') || message.includes('whatsapp') || message.includes('email')) {
-      return 'Você pode entrar em contato comigo através do:\nWhatsApp: (11) 97060-3441 ou (11) 99294-6628\nEmail: juliocamposmachado@gmail.com\nTerei prazer em avaliar seu perfil pessoalmente!';
+  const generateResponse = (message: string, previousMessages: Message[]): string => {
+    // Keywords for different topics
+    const keywords = {
+      casting: ['casting', 'teste', 'seleção', 'oportunidade'],
+      tv: ['novela', 'tv', 'televisão', 'série', 'programa'],
+      modelo: ['modelo', 'moda', 'passarela', 'desfile'],
+      publicidade: ['publicidade', 'comercial', 'campanha', 'propaganda'],
+      contato: ['contato', 'whatsapp', 'email', 'telefone'],
+      experiencia: ['experiência', 'currículo', 'trabalhou', 'carreira'],
+      idade: ['idade', 'anos', 'velho', 'novo', 'jovem'],
+      pagamento: ['pagar', 'pagamento', 'custo', 'valor', 'investimento', 'cobra'],
+      agencia: ['agência', 'agencias', 'empresa', 'produtora']
+    };
+
+    // Check if this is a greeting
+    if (/^(oi|olá|boa|bom|hey|hi|hello)/i.test(message)) {
+      return 'Olá! Como posso ajudar você hoje? Estou aqui para orientar sobre oportunidades em TV, publicidade, moda e muito mais!';
     }
 
-    return 'Posso ajudar você a entender melhor sobre o mundo artístico e suas oportunidades. Tenho vasta experiência com castings para TV, publicidade, moda e cinema. Para um atendimento personalizado, entre em contato pelo WhatsApp (11) 97060-3441 ou email juliocamposmachado@gmail.com';
+    // Check for thank you messages
+    if (/obrigad|agradeç|valeu|thanks/i.test(message)) {
+      return 'Por nada! Estou sempre à disposição para ajudar. Se precisar de mais informações, não hesite em perguntar!';
+    }
+
+    // Check for multiple topics in the message
+    let matchedTopics = [];
+    for (const [topic, words] of Object.entries(keywords)) {
+      if (words.some(word => message.includes(word))) {
+        matchedTopics.push(topic);
+      }
+    }
+
+    if (matchedTopics.length > 0) {
+      // Get responses for each matched topic
+      const responses = matchedTopics.map(topic => {
+        switch (topic) {
+          case 'casting':
+            return 'Para participar dos nossos castings, o primeiro passo é fazer um cadastro completo. Não cobramos nenhuma taxa para cadastro ou testes. Envie seu material para juliocamposmachado@gmail.com ou entre em contato pelo WhatsApp (11) 97060-3441.';
+          case 'tv':
+            return 'Trabalho diretamente com as principais emissoras do Brasil. Para TV, buscamos diversos perfis, com ou sem experiência. O mais importante é ter presença e comprometimento. Posso avaliar seu perfil pessoalmente.';
+          case 'modelo':
+            return 'Na área da moda, cada segmento tem suas especificações. Trabalhamos com moda comercial, editorial e passarela. O importante é ter seu material atualizado e disponibilidade para testes.';
+          case 'publicidade':
+            return 'O mercado publicitário está sempre buscando novos rostos. Trabalhamos com campanhas nacionais e internacionais. Cada cliente tem um perfil específico que buscamos atender.';
+          case 'contato':
+            return 'Você pode entrar em contato comigo pelo WhatsApp (11) 97060-3441 ou (11) 99294-6628, ou pelo email juliocamposmachado@gmail.com. Estou disponível para atendimento personalizado.';
+          case 'experiencia':
+            return 'A experiência prévia é bem-vinda, mas não é obrigatória. O mais importante é ter dedicação e comprometimento. Oferecemos orientação para iniciantes.';
+          case 'idade':
+            return 'Trabalhamos com todas as faixas etárias, cada projeto tem seu perfil específico. O importante é ter disponibilidade e comprometimento.';
+          case 'pagamento':
+            return 'Não cobramos nenhuma taxa para cadastro ou testes. Os valores são pagos pelos contratantes quando você é selecionado para um trabalho.';
+          case 'agencia':
+            return 'Trabalho de forma independente e também em parceria com as principais agências do mercado. Isso nos permite oferecer mais oportunidades para nossos talentos.';
+          default:
+            return null;
+        }
+      }).filter(response => response !== null);
+
+      if (responses.length > 0) {
+        // Return a combined response if multiple topics were matched
+        return responses.join(' ');
+      }
+    }
+
+    // Default response if no specific topics were matched
+    return 'Posso ajudar você com informações sobre castings, TV, publicidade, moda e muito mais. Para um atendimento personalizado, entre em contato pelo WhatsApp (11) 97060-3441 ou email juliocamposmachado@gmail.com. Qual área mais te interessa?';
   };
 
   return (
