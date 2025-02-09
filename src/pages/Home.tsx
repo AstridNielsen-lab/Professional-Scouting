@@ -93,7 +93,7 @@ const Home = () => {
                   <p className="text-gray-600 italic mb-4">
                     "Graças ao Julio Campos Machado, realizei meu sonho de trabalhar na TV. Sua orientação e oportunidades foram fundamentais para minha carreira."
                   </p>
-                  <p className="font-semibold">- Talento Descoberto {i}</p>
+                  <p className="font-semibold">- Modelo Like Look  {i}</p>
                 </div>
               </div>
             ))}
