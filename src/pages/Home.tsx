@@ -98,7 +98,7 @@ const Home = () => {
                 <img
                   src={story.image}
                   alt={story.name}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-64 object-cover object-top" // Aumentei a altura e ajustei o objeto
                 />
                 <div className="p-6">
                   <div className="flex items-center mb-4">
