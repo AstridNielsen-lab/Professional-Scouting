@@ -10,13 +10,13 @@ const About = () => {
       image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80',
     },
     {
-      name: 'Rafael Mendes',
+      name: 'Carlos Lima',
       role: 'Ator',
       quote: "Graças ao Julio, consegui meu primeiro papel em uma novela da Globo. Sua orientação foi essencial para eu me destacar nas audições.",
       image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80',
     },
     {
-      name: 'Camila Lima',
+      name: 'Rafael Mendes',
       role: 'Atriz',
       quote: "Sempre sonhei em ser atriz, e o Julio foi fundamental para eu conseguir meu primeiro trabalho na Record. Sou muito grata por toda a ajuda!",
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80',
