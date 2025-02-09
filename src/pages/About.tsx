@@ -2,6 +2,27 @@ import React from 'react';
 import { Award, Star, Tv, Users } from 'lucide-react';
 
 const About = () => {
+  const testimonials = [
+    {
+      name: 'Ana Clara Souza',
+      role: 'Atriz',
+      quote: "O Julio foi fundamental para minha carreira. Sua experiência e dedicação abriram portas que eu jamais imaginei possíveis.",
+      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80',
+    },
+    {
+      name: 'Rafael Mendes',
+      role: 'Ator',
+      quote: "Graças ao Julio, consegui meu primeiro papel em uma novela da Globo. Sua orientação foi essencial para eu me destacar nas audições.",
+      image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80',
+    },
+    {
+      name: 'Camila Lima',
+      role: 'Atriz',
+      quote: "Sempre sonhei em ser atriz, e o Julio foi fundamental para eu conseguir meu primeiro trabalho na Record. Sou muito grata por toda a ajuda!",
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80',
+    },
+  ];
+
   return (
     <div className="bg-gray-50">
       {/* Hero Section */}
@@ -64,25 +85,25 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Depoimentos</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-white p-6 rounded-lg shadow-md">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
                 <div className="flex items-center mb-4">
-                  {[...Array(5)].map((_, index) => (
-                    <Star key={index} className="w-5 h-5 text-yellow-500" />
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-500" />
                   ))}
                 </div>
                 <p className="text-gray-600 mb-4">
-                  "O Julio foi fundamental para minha carreira. Sua experiência e dedicação abriram portas que eu jamais imaginei possíveis."
+                  "{testimonial.quote}"
                 </p>
                 <div className="flex items-center space-x-4">
                   <img
-                    src={`https://images.unsplash.com/photo-${i === 1 ? '1494790108377-be9c29b29330' : i === 2 ? '1539571696357-5a69c17a67c6' : '1507003211169-0a1dd7228f2d'}?auto=format&fit=crop&q=80`}
-                    alt="Talento"
+                    src={testimonial.image}
+                    alt={testimonial.name}
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <div>
-                    <p className="font-semibold">Talento Descoberto</p>
-                    <p className="text-sm text-gray-500">Ator/Atriz</p>
+                    <p className="font-semibold">{testimonial.name}</p>
+                    <p className="text-sm text-gray-500">{testimonial.role}</p>
                   </div>
                 </div>
               </div>
